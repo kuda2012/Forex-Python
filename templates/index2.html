@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forex Converter</title>
+    <link rel="stylesheet" href="/static/app.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body id="body">
+    <div id="mainDiv">
+      <div class="inputs">
+        <h3>Currency Converter</h3>
+      </div>
+      <form action="/convert">
+        <div class="inputs">
+          <label for="start">Converting from</label>
+          <input type="text" name="start" placeholder="(eg, USD, EUR, JPY)" />
+        </div>
+        <div class="inputs">
+          <label for="end">Converting to</label>
+          <input type="text" name="end" placeholder="(eg, USD, EUR, JPY)" />
+        </div>
+        <div class="inputs">
+          <label for="amount">Amount:</label>
+          <input type="text" name="amount" placeholder="" />
+        </div>
+        <div class="inputs">
+          <button type="submit" class="btn btn-primary">Convert</button>
+        </div>
+        <h3 class="inputs">
+          {{amount}} {{currency_name_start}} ({{start}}) &rarr;
+          {{symbol_and_amount_end}} {{currency_name_end}} ({{end}})
+        </h3>
+      </form>
+    </div>
+  </body>
+</html>
