@@ -3,14 +3,20 @@ from flask import session, request
 from app import app, currency
 from currency import Currency
 from unittest.mock import MagicMock
+<<<<<<< HEAD
 from forex_python.converter import CurrencyRates, CurrencyCodes
+=======
+
+>>>>>>> 788766df6e41a4c23ec883d1f2b7ce18f68c149c
 app.config['TESTING'] = True
+
 
 class FlaskTests(TestCase):
 
     def test_USD(self):
         """Test to see if one USD translate to one USD"""
         with app.test_client() as client:
+<<<<<<< HEAD
          
             params = {"start": "USD", "end": "USD", "amount": "1"}
             res = client.get("/convert", query_string=params)
@@ -21,6 +27,10 @@ class FlaskTests(TestCase):
         """Test to see if magic mock return value is used as amount"""
         with app.test_client() as client:
             currency.c.convert = MagicMock(return_value=3)
+=======
+            app.currency.c.convert = MagicMock(return_value=3)
+
+>>>>>>> 788766df6e41a4c23ec883d1f2b7ce18f68c149c
             params = {"start": "USD", "end": "GBP", "amount": "1"}
             res = client.get("/convert", query_string=params)
             html = res.get_data(as_text=True)
@@ -46,9 +56,12 @@ class FlaskTests(TestCase):
         self.assertTrue(s)
         self.assertTrue(e)
         self.assertFalse(a)
+<<<<<<< HEAD
     def test_ValidateBadStartEndAmount(self):
         cur = Currency()
         s, e, a = cur.validate_code("XXX", "YYY", "1..0")
         self.assertTrue(s)
         self.assertTrue(e)
         self.assertTrue(a)
+=======
+>>>>>>> 788766df6e41a4c23ec883d1f2b7ce18f68c149c
