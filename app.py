@@ -12,6 +12,7 @@ def create_form():
     return render_template('index.html')
 
 
+
 @app.route("/convert")
 def translate_currency():
     """Translate inputted currency codes into the appropriate dollar amounts"""
@@ -22,7 +23,6 @@ def translate_currency():
     start_err, end_err, amount_err = currency.validate_code(start,end, amount)
 
     errors = []
-
     if start_err:
         errors.append(f"Not a valid currency code:\"{start}\" - please enter a valid currency code")
     if end_err:
@@ -33,10 +33,8 @@ def translate_currency():
         for error in errors:
             flash(error, 'error')
         return render_template("index.html")
-
+    
     currency_name_start, symbol_and_amount_end, currency_name_end = currency.calculate_currency(start, end, amount)
-    print(currency_name_end)  
-    flash(f"{amount} {currency_name_start} ({start.upper()}) ", "success")
     return render_template("index2.html", amount = amount, start = start.upper(), end =end.upper(), currency_name_start =currency_name_start, symbol_and_amount_end = symbol_and_amount_end, currency_name_end = currency_name_end)
 
 
